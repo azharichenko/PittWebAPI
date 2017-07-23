@@ -1,0 +1,1 @@
+from .subjects import _fetch_all_departments

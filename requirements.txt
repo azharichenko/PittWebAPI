@@ -1,3 +1,7 @@
 Flask
 flask-sqlalchemy
 flask_restful
+
+requests
+grequests
+bs4
