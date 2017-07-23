@@ -1,1 +1,6 @@
-from .subjects import _fetch_all_departments
+from ..models import Subject
+from .subjects import populate_database
+
+
+def populate():
+    populate_database(Subject)

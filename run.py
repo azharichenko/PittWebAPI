@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import argparse
 
-from PittWebAPI import create_app
-
+from PittWebAPI import create_app, db
 
 parser = argparse.ArgumentParser(description='Pitt WebAPI Server')
 parser.add_argument('-d', '--dev', action='store_true')
@@ -19,5 +18,10 @@ else:
 
 if __name__ == '__main__':
     app = create_app(configuration)
+    with app.app_context():
+        db.create_all()
+        
+        from PittWebAPI.scraper import populate
+        populate()
 
     app.run()

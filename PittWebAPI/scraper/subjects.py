@@ -35,9 +35,11 @@ def _parse_subjects(responses):
         soup = BeautifulSoup(response.text, 'lxml')
         parent = soup.find('div', {'class', 'primary-head'}).parent
         subjects = parent.findAll('div', {'class': 'strong section-body'})
-        subject_catalog.append(_extract_subjects(subjects))
+        subject_catalog.extend(_extract_subjects(subjects))
     return subject_catalog
 
 
-responses = _fetch_all_departments()
-subject_codes = _parse_subjects(responses)
+def populate_database(model):
+    responses = _fetch_all_departments()
+    subject_codes = _parse_subjects(responses)
+    model.register_all(subject_codes)
