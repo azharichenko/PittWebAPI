@@ -1,6 +1,6 @@
 # Pitt Web API
 [![License GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
-![Version 0.0.0](https://img.shields.io/badge/0.0.0-green.svg)
+![Version 0.0.0](https://img.shields.io/badge/version-0.0.0-green.svg)
 
 The Pitt Web API is a combination of the Pitt Computer Science Club's PittAPI and GraphQL to make a simple and consise API for the web. This app uses the PittAPI as a scrapping tool.
 
