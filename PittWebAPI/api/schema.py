@@ -2,22 +2,20 @@ from ..models import (
     Subject as SubjectModel
 )
 
-from graphene import relay, Schema, ObjectType
-from graphene_sqlalchemy import (
-    SQLAlchemyObjectType,
-    SQLAlchemyConnectionField
-)
+from graphene import Schema, ObjectType, List
+from graphene_sqlalchemy import SQLAlchemyObjectType
 
 
 class Subject(SQLAlchemyObjectType):
     class Meta:
         model = SubjectModel
-        interfaces = (relay.Node,)
 
 
 class Query(ObjectType):
-    node = relay.Node.Field()
-    all_subjects = SQLAlchemyConnectionField(Subject)
+    subjects = List(Subject)
 
+    def resolve_subjects(self, args, context, info):
+        query = Subject.get_query(context)
+        return query.all()
 
 schema = Schema(query=Query)
