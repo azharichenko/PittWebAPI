@@ -1,6 +1,11 @@
 Flask
+
+graphene
+Flask-GraphQL
+
+SQLAlchemy
 flask-sqlalchemy
-flask_restful
+graphene-sqlalchemy
 
 requests
 grequests
