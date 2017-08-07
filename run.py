@@ -20,6 +20,7 @@ else:
 if __name__ == '__main__':
     app = create_app(configuration)
     with app.app_context():
+        Base.metadata.drop_all(bind=engine)
         Base.metadata.create_all(bind=engine)
 
         from PittWebAPI.scraper import populate

@@ -19,8 +19,8 @@ Base.query = db_session.query_property()
 class Subject(Base):
     __tablename__ = 'subject'
     id = Column(Integer, primary_key=True)
-    code = Column(String(32), index=True, unique=False)
-    name = Column(String(32), unique=False)
+    code = Column(String)
+    name = Column(String)
 
     def __init__(self, code, name):
         self.code = code
@@ -44,12 +44,13 @@ class Subject(Base):
 class Term(Base):
     __tablename__ = 'term'
     id = Column(Integer, primary_key=True)
-    number = Column(Integer, unique=True)
 
 
 class Class(Base):
     __tablename__ = 'class'
+    id = Column(Integer, primary_key=True)
 
 
 class Textbook(Base):
     __tablename__ = 'textbook'
+    id = Column(Integer, primary_key=True)
