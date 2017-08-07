@@ -40,3 +40,16 @@ class Subject(Base):
     def __repr__(self):
         return '<Subject {}>'.format(self.code)
 
+
+class Term(Base):
+    __tablename__ = 'term'
+    id = Column(Integer, primary_key=True)
+    number = Column(Integer, unique=True)
+
+
+class Class(Base):
+    __tablename__ = 'class'
+
+
+class Textbook(Base):
+    __tablename__ = 'textbook'
