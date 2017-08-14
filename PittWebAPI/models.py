@@ -50,6 +50,14 @@ class Term(Base):
         db_session.add(term)
         db_session.commit()
 
+    @staticmethod
+    def register_all(term_numbers):
+        for number in term_numbers:
+            Term.register(number)
+
+    def __repr__(self):
+        return 'Term({})'.format(self.number)
+
 
 class Class(Base):
     __tablename__ = 'class'
