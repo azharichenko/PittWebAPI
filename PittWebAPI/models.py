@@ -42,6 +42,13 @@ class Subject(Base):
 class Term(Base):
     __tablename__ = 'term'
     id = Column(Integer, primary_key=True)
+    number = Column(Integer)
+
+    @staticmethod
+    def register(number):
+        term = Term(number)
+        db_session.add(term)
+        db_session.commit()
 
 
 class Class(Base):
@@ -67,3 +74,7 @@ class Textbook(Base):
     __tablename__ = 'textbook'
     id = Column(Integer, primary_key=True)
 
+
+class Lab(Base):
+    __tablename__ = 'lab'
+    id = Column(Integer, primary_key=True)
