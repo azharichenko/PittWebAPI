@@ -1,0 +1,27 @@
+type Subject {
+  name: String
+  code: String
+  courses: [Course]
+}
+
+type Course {
+  name: String
+  sections: [Section]
+  subject: Subject
+}
+
+type Section {
+  number: Integer
+  courses: [Course]
+}
+
+type Class {
+  number: Integer
+  instructor: String
+  days: [String]
+  time: [String]
+  classroom: String
+  section: Section
+  course: Course
+  credit: Integer
+}

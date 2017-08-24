@@ -11,7 +11,6 @@ class Subject(SQLAlchemyObjectType):
     class Meta:
         model = SubjectModel
         interfaces = (graphene.relay.Node,)
-        first = graphene.Argument(graphene.Int, default_value=-1)
 
 
 class Course(SQLAlchemyObjectType):
@@ -23,15 +22,14 @@ class Course(SQLAlchemyObjectType):
 class Query(graphene.ObjectType):
     node = graphene.relay.Node.Field()
     subjects = graphene.List(Subject)
-    course = graphene.Field(Course)
+    course = graphene.List(Course)
 
     def resolve_subjects(self, args, context, info):
         query = Subject.get_query(context)
-        return query.all()[:args['first']]
+        return query.all()
 
     def resolve_course(self, args, context, info):
-        query = Subject.get_query(context)
-        print(query)
+        query = Course.get_query(context)
         return query.all()
 
 

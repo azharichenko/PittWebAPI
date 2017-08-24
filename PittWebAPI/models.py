@@ -26,8 +26,12 @@ class Subject(Base):
     def register(code, name):
         subject = Subject(code=code, name=name)
         course = Course(name='0100' + code, subject=subject)
+        course1 = Course(name='0200' + code, subject=subject)
+        course2 = Course(name='0300' + code, subject=subject)
         db_session.add(subject)
         db_session.add(course)
+        db_session.add(course1)
+        db_session.add(course2)
         db_session.commit()
 
     @staticmethod
