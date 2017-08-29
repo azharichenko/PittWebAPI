@@ -8,6 +8,7 @@ type Course {
   name: String
   sections: [Section]
   subject: Subject
+  credit: Integer
 }
 
 type Section {
@@ -23,5 +24,20 @@ type Class {
   classroom: String
   section: Section
   course: Course
-  credit: Integer
+  textbooks: [Textbook]
+  description: String
+  enroll_limit: Integer
+}
+
+type Textbook {
+  title: String
+  author: String
+  isbn: Integer
+  citation: String
+  edition: String
+}
+
+type Classroom {
+  building: String
+  room: Integer
 }

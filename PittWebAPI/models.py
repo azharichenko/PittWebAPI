@@ -68,6 +68,11 @@ class Class(Base):
     id = Column(Integer, primary_key=True)
 
 
+class Classroom(Base):
+    __tablename__ = 'classroom'
+    id = Column(Integer, primary_key=True)
+    
+
 class Course(Base):
     __tablename__ = 'course'
     id = Column(Integer, primary_key=True)
@@ -84,9 +89,4 @@ class Course(Base):
 
 class Textbook(Base):
     __tablename__ = 'textbook'
-    id = Column(Integer, primary_key=True)
-
-
-class Lab(Base):
-    __tablename__ = 'lab'
     id = Column(Integer, primary_key=True)
