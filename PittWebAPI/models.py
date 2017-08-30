@@ -71,7 +71,7 @@ class Class(Base):
 class Classroom(Base):
     __tablename__ = 'classroom'
     id = Column(Integer, primary_key=True)
-    
+
 
 class Course(Base):
     __tablename__ = 'course'
