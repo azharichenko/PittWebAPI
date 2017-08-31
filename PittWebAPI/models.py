@@ -24,23 +24,35 @@ class Subject(Base):
 
     @staticmethod
     def register(code, name):
-        subject = Subject(code=code, name=name)
-        course = Course(name='0100' + code, subject=subject)
-        course1 = Course(name='0200' + code, subject=subject)
-        course2 = Course(name='0300' + code, subject=subject)
+        subject = Subject(
+            code=code,
+            name=name
+        )
         db_session.add(subject)
-        db_session.add(course)
-        db_session.add(course1)
-        db_session.add(course2)
         db_session.commit()
 
     @staticmethod
     def register_all(subject_codes):
         for code in subject_codes:
-            Subject.register(*code[:2])  # TODO(Alex Z.) Look into the splitting since - occurs more than once
+            Subject.register(*code[:2])  # TODO(azharichenko) Look into the splitting since - occurs more than once
 
     def __repr__(self):
         return 'Subject({})'.format(self.code)
+
+
+
+class Course(Base):
+    __tablename__ = 'course'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+    subject_id = Column(Integer, ForeignKey('subject.id'))
+    subject = relationship(
+        Subject,
+        backref=backref('subject',
+                        uselist=True,
+                        cascade='delete,all')
+    )
 
 
 class Term(Base):
@@ -67,26 +79,22 @@ class Class(Base):
     __tablename__ = 'class'
     id = Column(Integer, primary_key=True)
 
+class Building(Base):
+    __tablename__ = 'building'
+    id = Column(Integer, primary_key=true)
+
 
 class Classroom(Base):
     __tablename__ = 'classroom'
     id = Column(Integer, primary_key=True)
 
 
-class Course(Base):
-    __tablename__ = 'course'
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-
-    subject_id = Column(Integer, ForeignKey('subject.id'))
-    subject = relationship(
-        Subject,
-        backref=backref('subject',
-                        uselist=True,
-                        cascade='delete,all')
-    )
-
 
 class Textbook(Base):
     __tablename__ = 'textbook'
+    id = Column(Integer, primary_key=True)
+
+
+class Instructor(Base):
+    __tablename__ ='instructor'
     id = Column(Integer, primary_key=True)

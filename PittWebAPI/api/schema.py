@@ -13,7 +13,6 @@ class Subject(SQLAlchemyObjectType):
         interfaces = (graphene.relay.Node,)
 
 
-
 class Course(SQLAlchemyObjectType):
     class Meta:
         model = CourseModel
