@@ -45,6 +45,7 @@ class Course(Base):
     __tablename__ = 'course'
     id = Column(Integer, primary_key=True)
     name = Column(String)
+    number = Column(Integer)
 
     subject_id = Column(Integer, ForeignKey('subject.id'))
     subject = relationship(
@@ -53,6 +54,19 @@ class Course(Base):
                         uselist=True,
                         cascade='delete,all')
     )
+
+    def __repr(self):
+        return 'Course({} {})'.format(self.subject, self.number)
+
+class Section(Base):
+    __tablename__ = 'section'
+    id = Column(Integer, primary_key=True)
+
+
+class Class(Base):
+    __tablename__ = 'class'
+    id = Column(Integer, primary_key=True)
+
 
 
 class Term(Base):
@@ -75,9 +89,7 @@ class Term(Base):
         return 'Term({})'.format(self.number)
 
 
-class Class(Base):
-    __tablename__ = 'class'
-    id = Column(Integer, primary_key=True)
+
 
 class Building(Base):
     __tablename__ = 'building'
@@ -87,7 +99,6 @@ class Building(Base):
 class Classroom(Base):
     __tablename__ = 'classroom'
     id = Column(Integer, primary_key=True)
-
 
 
 class Textbook(Base):
