@@ -6,7 +6,7 @@ LETTERS = 'ABCDEFGHIJLMNOPRSTUW'
 TO_BE_DETERMINED = 'KQV'  # TODO(Alex Z.) Look into ... to help assist with this
 
 CATALOG_URL = 'https://psmobile.pitt.edu/app/catalog/listCatalog'
-BASE_URL = 'https://psmobile.pitt.edu/app/catalog/listSubjectsByLetter/UPITT/'
+BASE_URL = 'https://psmobile.pitt.edu/app/catalog/listSubjects'
 
 
 # TODO(Alex Z.) Be able to fetch direct from course catalog
