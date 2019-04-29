@@ -25,15 +25,15 @@ class Query(graphene.ObjectType):
     subject = graphene.Field(Subject)
     subjects = graphene.List(Subject)
 
-    def resolve_subjects(self, args, context, info):
-        return Subject.get_query(context).all()
+    def resolve_subjects(self, info):
+        return Subject.get_query(info).all()
 
-    def resolve_subject(self, args, context, info):
-        query = Subject.get_query(context)
+    def resolve_subject(self, info):
+        query = Subject.get_query(info)
         return query.first()
 
-    def resolve_course(self, args, context, info):
-        query = Course.get_query(context)
+    def resolve_course(self, info):
+        query = Course.get_query(info)
         return query.all()
 
 

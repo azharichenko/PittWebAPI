@@ -1,3 +1,8 @@
+type Term {
+  number: Integer
+  subjects: [Subject]
+}
+
 type Subject {
   name: String
   code: String
@@ -13,16 +18,10 @@ type Course {
 
 type Section {
   number: Integer
-  courses: [Course]
-}
-
-type Class {
-  number: Integer
   instructor: String
   days: [String]
   time: [String]
   classroom: String
-  section: Section
   course: Course
   textbooks: [Textbook]
   description: String
@@ -42,9 +41,6 @@ type Classroom {
   room: Integer
 }
 
-type Term {
-  number: Integer
-}
 
 type Instructor {
   name: String

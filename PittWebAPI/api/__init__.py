@@ -12,3 +12,4 @@ api.add_url_rule(
         graphiql=True
     )
 )
+

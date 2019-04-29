@@ -2,7 +2,7 @@
 import argparse
 
 from PittWebAPI import create_app
-from PittWebAPI.models import Base, engine
+from PittWebAPI.database import init_db
 
 parser = argparse.ArgumentParser(description='Pitt WebAPI Server')
 parser.add_argument('-d', '--dev', action='store_true')
@@ -20,10 +20,7 @@ else:
 if __name__ == '__main__':
     app = create_app(configuration)
     with app.app_context():
-        Base.metadata.drop_all(bind=engine)
-        Base.metadata.create_all(bind=engine)
-
+        init_db()
         from PittWebAPI.scraper import populate
         populate()
-
     app.run()

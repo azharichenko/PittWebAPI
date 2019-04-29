@@ -9,14 +9,14 @@ verify_ssl = true
 graphene = "*"
 graphene-sqlalchemy = "*"
 requests = "*"
-grequests = "*"
 bs4 = "*"
 lxml = "*"
 Flask = "*"
 Flask-GraphQL = "*"
 SQLAlchemy = "*"
 Flask-SQLAlchemy = "*"
-urllib3 = "*"
+requests-async = "*"
+pittapi = "*"
 
 [requires]
 python_version = "3.6"
